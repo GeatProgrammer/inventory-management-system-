@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.inventory.controller.MainController">
+    <tabs>
+        <Tab text="Product Management">
+            <content>
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <Label text="Product Inventory" style="-fx-font-size: 14;"/>
+                    <TableView fx:id="productTable">
+                        <columns>
+                            <TableColumn fx:id="productIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="productNameColumn" text="Name" prefWidth="150"/>
+                            <TableColumn fx:id="productPriceColumn" text="Price" prefWidth="80"/>
+                            <TableColumn fx:id="productQuantityColumn" text="Quantity" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                    
+                    <HBox spacing="10">
+                        <VBox spacing="5">
+                            <Label text="Add/Update Product"/>
+                            <GridPane hgap="5" vgap="5">
+                                <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                <TextField fx:id="productIdField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                
+                                <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                <TextField fx:id="productNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                
+                                <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                <TextField fx:id="productPriceField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                
+                                <Label text="Quantity:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <TextField fx:id="productQuantityField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                            </GridPane>
+                            
+                            <HBox spacing="10">
+                                <Button text="Add Product" onAction="#handleAddProduct"/>
+                                <Button text="Delete Selected" onAction="#handleDeleteProduct"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </content>
+        </Tab>
+        
+        <Tab text="Sales Processing">
+            <content>
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <Label text="Process Sale" style="-fx-font-size: 14;"/>
+                    
+                    <HBox spacing="10">
+                        <Label text="Date:"/>
+                        <DatePicker fx:id="saleDatePicker" editable="false"/>
+                    </HBox>
+                    
+                    <HBox spacing="10">
+                        <ComboBox fx:id="saleProductCombo" promptText="Select Product" prefWidth="200"/>
+                        <Label text="Quantity:"/>
+                        <TextField fx:id="saleQuantityField" prefWidth="50"/>
+                        <Button text="Add to Sale" onAction="#handleAddToSale"/>
+                    </HBox>
+                    
+                    <Label text="Sale Details"/>
+                    <TextArea fx:id="saleDetailsArea" prefHeight="150" editable="false"/>
+                    
+                    <Button text="Complete Sale" onAction="#handleCompleteSale"/>
+                </VBox>
+            </content>
+        </Tab>
+        
+        <Tab text="Sales Reports">
+            <content>
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <Label text="Daily Sales Report" style="-fx-font-size: 14;"/>
+                    
+                    <HBox spacing="10">
+                        <Label text="Select Date:"/>
+                        <DatePicker fx:id="reportDatePicker"/>
+                        <Button text="Generate Report" onAction="#handleGenerateReport"/>
+                    </HBox>
+                    
+                    <TextArea fx:id="reportArea" prefHeight="300" editable="false"/>
+                    
+                    <Button text="Delete Report" onAction="#handleDeleteReport"/>
+                </VBox>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>
